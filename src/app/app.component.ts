@@ -20,14 +20,15 @@ export class AppComponent implements OnInit, OnDestroy {
     { id: '2', label: 'Change Height: 300' },
     { id: '3', label: 'Change Width: 500 & Height: 100' },
     { id: '4', label: 'Change Color' },
-    { id: '5', label: 'Default' },
+    { id: '5', label: 'Long Text' },
+    { id: '6', label: 'Default' },
   ];
 
   formControl = new FormControl({ id: '1', label: 'Tooltip Left' });
-  formControlConfig = new FormControl({ id: '5', label: 'Default' });
+  formControlConfig = new FormControl({ id: '6', label: 'Default' });
   config$ = new BehaviorSubject<any>({});
   showTooltipOption$ = new BehaviorSubject<any>(null);
-
+  text = 'Tooltip Content';
   private onDestroy$ = new Subject<void>();
 
   ngOnInit() {
@@ -70,6 +71,12 @@ export class AppComponent implements OnInit, OnDestroy {
           case '4':
             config = { ...this.config$.getValue(), backgroundColor: 'green' };
             this.config$.next({ ...config });
+            break;
+          case '5':
+            this.text = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+            molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+            numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+            optio, eaque rerum! Provident similique accusantium nemo autem. `;
             break;
           default:
             this.config$.next({});

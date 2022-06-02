@@ -25,6 +25,10 @@
 .custom-tooltip-content {
   display: flex;
   align-items: center;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+  max-width: 300px;
 }
 
 .button-container-1 .tooltip-button {
