@@ -15,43 +15,36 @@ export class AppComponent implements OnInit, OnDestroy {
     { id: '3', label: 'Tooltip Center' },
   ];
 
-  optionsLeft = [
-    { id: '1', label: 'Option A', tooltip: 'ToolTip A' },
-    { id: '2', label: 'Option B', tooltip: 'ToolTip B' },
-    { id: '3', label: 'Option C', tooltip: 'ToolTip C' },
-  ];
-
-  optionsRight = [
-    { id: '1', label: 'Option A', tooltip: 'ToolTip A' },
-    { id: '2', label: 'Option B', tooltip: 'ToolTip B' },
-    { id: '3', label: 'Option C', tooltip: 'ToolTip C' },
-  ];
-
-  optionsCenter = [
-    { id: '1', label: 'Option A', tooltip: 'ToolTip A' },
-    { id: '2', label: 'Option B', tooltip: 'ToolTip B' },
-    { id: '3', label: 'Option C', tooltip: 'ToolTip C' },
+  optionsTwo = [
+    { id: '1', label: 'Width: 300' },
+    { id: '2', label: 'Width: 400' },
+    { id: '3', label: 'Width: 500' },
   ];
 
   formControl = new FormControl({ id: '1', label: 'Tooltip Left' });
-  formControlLeft = new FormControl({ id: '2', label: 'Checked B' });
-  formControlRight = new FormControl({ id: '2', label: 'Checked B' });
-  formControlCenter = new FormControl({ id: '2', label: 'Checked B' });
-
+  formControlConfig = new FormControl({ id: '1', label: 'Tooltip Left' });
+  config$ = new BehaviorSubject<any>(null);
   showTooltipOption$ = new BehaviorSubject<any>(null);
-  onDestroy$ = new Subject<void>();
+
+  private onDestroy$ = new Subject<void>();
 
   ngOnInit() {
-    this.formControl.valueChanges
-      .pipe(
-        takeUntil(this.onDestroy$),
-        startWith({ id: '1', label: 'Tooltip Left' })
-      )
-      .subscribe((val) => this.showTooltipOption$.next(val));
+    this.initListeners();
   }
 
   ngOnDestroy() {
     this.onDestroy$.next();
     this.onDestroy$.complete();
+  }
+
+  initListeners() {
+    this.formControl.valueChanges
+      .pipe(
+        takeUntil(this.onDestroy$),
+        startWith({ id: '1', label: 'Tooltip Left' })
+      )
+      .subscribe((val) => {
+        this.showTooltipOption$.next(val);
+      });
   }
 }

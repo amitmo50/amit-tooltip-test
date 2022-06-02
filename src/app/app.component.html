@@ -9,10 +9,7 @@
       <fusion-button
         class="danger"
         fusionTooltip
-        [configuration]="{
-          backgroundColor: 'green',
-          width: 200
-        }"
+        [configuration]="config$ | async"
       >
         <div>Trigger Tooltip</div>
         <div *fusionTooltipContent>
@@ -22,13 +19,6 @@
           </span>
         </div>
       </fusion-button>
-
-      <fusion-radio-group
-        class="options-1"
-        [formControl]="formControlLeft"
-        [options]="optionsLeft"
-      >
-      </fusion-radio-group>
     </div>
 
     <!-- Right -->
@@ -40,10 +30,7 @@
       <fusion-button
         class="third"
         fusionTooltip
-        [configuration]="{
-          backgroundColor: 'blue',
-          width: 500
-        }"
+        [configuration]="config$ | async"
       >
         <div>Trigger Tooltip</div>
         <div *fusionTooltipContent>
@@ -53,13 +40,6 @@
           </span>
         </div>
       </fusion-button>
-
-      <fusion-radio-group
-        class="options-1"
-        [formControl]="formControlRight"
-        [options]="optionsRight"
-      >
-      </fusion-radio-group>
     </div>
   </div>
 
@@ -68,9 +48,7 @@
     <fusion-button
       class="secondary"
       fusionTooltip
-      [configuration]="{
-        height: 200
-      }"
+      [configuration]="config$ | async"
     >
       <div>Trigger Tooltip</div>
       <div *fusionTooltipContent>
@@ -80,22 +58,24 @@
         </span>
       </div>
     </fusion-button>
-
-    <fusion-radio-group
-      class="options-1"
-      [formControl]="formControlCenter"
-      [options]="optionsCenter"
-    >
-    </fusion-radio-group>
   </div>
+</div>
 
-  <div class="radio-holder">
-    <fusion-radio-group
-      class="options-1"
-      [formControl]="formControl"
-      [options]="options"
-      [inline]="true"
-    >
-    </fusion-radio-group>
-  </div>
+<div class="radio-holder">
+  <label class="label-pos">Position: </label>
+  <fusion-radio-group
+    class="options-1"
+    [formControl]="formControl"
+    [options]="options"
+    [inline]="true"
+  >
+  </fusion-radio-group>
+  <label class="label-config">Configuration: </label>
+  <fusion-radio-group
+    class="options-2"
+    [formControl]="formControlConfig"
+    [options]="optionsTwo"
+    [inline]="true"
+  >
+  </fusion-radio-group>
 </div>
