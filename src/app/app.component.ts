@@ -16,9 +16,9 @@ export class AppComponent implements OnInit, OnDestroy {
   ];
 
   optionsTwo = [
-    { id: '1', label: 'Change Width' },
-    { id: '2', label: 'Change Height' },
-    { id: '3', label: 'Change Width & Height' },
+    { id: '1', label: 'Change Width: 200' },
+    { id: '2', label: 'Change Height: 300' },
+    { id: '3', label: 'Change Width: 200 & Height: 300' },
     { id: '4', label: 'Change Color' },
     { id: '5', label: 'Default' },
   ];
@@ -47,6 +47,7 @@ export class AppComponent implements OnInit, OnDestroy {
       )
       .subscribe((val) => {
         this.showTooltipOption$.next(val);
+        this.formControlConfig.setValue({ id: '5', label: 'Default' });
       });
 
     this.formControlConfig.valueChanges
@@ -63,9 +64,19 @@ export class AppComponent implements OnInit, OnDestroy {
             this.config$.next(config);
             break;
           case '3':
-            config = { ...this.config$.getValue(), height: 300, width: 200 };
+            config = { height: 300, width: 200 };
             this.config$.next(config);
             break;
+          case '4':
+            config = { ...this.config$.getValue(), backgroundColor: 'green' };
+            this.config$.next(config);
+            break;
+          case '5':
+            config = {};
+            this.config$.next(config);
+            break;
+          default:
+            this.config$.next(null);
         }
       });
   }
