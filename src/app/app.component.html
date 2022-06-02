@@ -1,89 +1,95 @@
-<div class="button-container-1">
-  <!-- Left -->
+<div class="main-content">
+  <div class="button-container-1">
+    <!-- Left -->
 
-  <fusion-button
-    class="danger"
-    fusionTooltip
-    [configuration]="{
-      backgroundColor: 'green',
-      width: 200
-    }"
-  >
-    <div>Trigger Tooltip</div>
-    <div *fusionTooltipContent>
-      <span class="custom-tooltip-content"
-        >Tooltip Content
-        <fusion-icon name="group"></fusion-icon>
-      </span>
+    <div class="button-container-1" *ngIf="formControl.value.id === '1'">
+      <fusion-button
+        class="danger"
+        fusionTooltip
+        [configuration]="{
+          backgroundColor: 'green',
+          width: 200
+        }"
+      >
+        <div>Trigger Tooltip</div>
+        <div *fusionTooltipContent>
+          <span class="custom-tooltip-content"
+            >Tooltip Content
+            <fusion-icon name="group"></fusion-icon>
+          </span>
+        </div>
+      </fusion-button>
+
+      <fusion-radio-group
+        class="options-1"
+        [formControl]="formControlLeft"
+        [options]="optionsLeft"
+      >
+      </fusion-radio-group>
     </div>
-  </fusion-button>
 
-  <fusion-radio-group
-    class="options-1"
-    [formControl]="formControlLeft"
-    [options]="optionsLeft"
-  >
-  </fusion-radio-group>
+    <!-- Right -->
 
-  <!-- Right -->
+    <div *ngIf="formControl.value.id === '2'" class="third tooltip-button">
+      <fusion-button
+        class="third"
+        fusionTooltip
+        [configuration]="{
+          backgroundColor: 'blue',
+          width: 500
+        }"
+      >
+        <div>Trigger Tooltip</div>
+        <div *fusionTooltipContent>
+          <span class="custom-tooltip-content"
+            >Tooltip Content
+            <fusion-icon name="group"></fusion-icon>
+          </span>
+        </div>
+      </fusion-button>
 
-  <fusion-button
-    class="third tooltip-button"
-    fusionTooltip
-    [configuration]="{
-      backgroundColor: 'blue',
-      width: 500
-    }"
-  >
-    <div>Trigger Tooltip</div>
-    <div *fusionTooltipContent>
-      <span class="custom-tooltip-content"
-        >Tooltip Content
-        <fusion-icon name="group"></fusion-icon>
-      </span>
+      <fusion-radio-group
+        class="options-1"
+        [formControl]="formControlRight"
+        [options]="optionsRight"
+      >
+      </fusion-radio-group>
     </div>
-  </fusion-button>
+  </div>
 
-  <fusion-radio-group
-    class="options-1"
-    [formControl]="formControlRight"
-    [options]="optionsRight"
-  >
-  </fusion-radio-group>
-</div>
+  <!-- Center -->
+  <div class="button-container" *ngIf="formControl.value.id === '3'">
+    <fusion-button
+      class="secondary"
+      fusionTooltip
+      [configuration]="{
+        height: 200
+      }"
+    >
+      <div>Trigger Tooltip</div>
+      <div *fusionTooltipContent>
+        <span class="custom-tooltip-content"
+          >Tooltip Content
+          <fusion-icon name="group"></fusion-icon>
+        </span>
+      </div>
+    </fusion-button>
 
-<!-- Center -->
-<div class="button-container">
-  <fusion-button
-    class="secondary"
-    fusionTooltip
-    [configuration]="{
-      height: 200
-    }"
-  >
-    <div>Trigger Tooltip</div>
-    <div *fusionTooltipContent>
-      <span class="custom-tooltip-content"
-        >Tooltip Content
-        <fusion-icon name="group"></fusion-icon>
-      </span>
-    </div>
-  </fusion-button>
+    <fusion-radio-group
+      class="options-1"
+      [formControl]="formControlCenter"
+      [options]="optionsCenter"
+    >
+    </fusion-radio-group>
+  </div>
 
-  <fusion-radio-group
-    class="options-1"
-    [formControl]="formControlCenter"
-    [options]="optionsCenter"
-  >
-  </fusion-radio-group>
-</div>
-
-<div class="radio-holder">
-  <fusion-radio-group
-    class="options-1"
-    [formControl]="formControlCenter"
-    [options]="options"
-    [inline]="true"
-  >
-  </fusion-radio-group>
+  <div class="radio-holder">
+    <fusion-radio-group
+      class="options-1"
+      [formControl]="formControl"
+      [options]="options"
+      [inline]="true"
+    >
+    </fusion-radio-group>
+  </div>
 </div>

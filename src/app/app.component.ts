@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'my-app',
@@ -31,10 +32,17 @@ export class AppComponent implements OnInit {
     { id: '3', label: 'Option C', tooltip: 'ToolTip C' },
   ];
 
-  formControl = new FormControl({ id: '2', label: 'Checked B' });
+  formControl = new FormControl({ id: '1', label: 'Tooltip Left' });
   formControlLeft = new FormControl({ id: '2', label: 'Checked B' });
   formControlRight = new FormControl({ id: '2', label: 'Checked B' });
   formControlCenter = new FormControl({ id: '2', label: 'Checked B' });
 
-  ngOnInit() {}
+  showTooltipOption$ = new BehaviorSubject<string>('1');
+
+  ngOnInit() {
+    this.formControl.valueChanges.subscribe((val) => {
+      console.log(val);
+      this.showTooltipOption$.next(val);
+    });
+  }
 }
