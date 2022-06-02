@@ -34,3 +34,9 @@ fusion-icon {
   width: 16px;
   height: 16px;
 }
+
+.radio-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

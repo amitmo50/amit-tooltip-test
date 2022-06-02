@@ -20,8 +20,8 @@
 
   <fusion-radio-group
     class="options-1"
-    [formControl]="formControl"
-    [options]="options"
+    [formControl]="formControlLeft"
+    [options]="optionsLeft"
   >
   </fusion-radio-group>
 
@@ -46,8 +46,8 @@
 
   <fusion-radio-group
     class="options-1"
-    [formControl]="formControl"
-    [options]="options"
+    [formControl]="formControlRight"
+    [options]="optionsRight"
   >
   </fusion-radio-group>
 </div>
@@ -72,8 +72,18 @@
 
   <fusion-radio-group
     class="options-1"
-    [formControl]="formControl"
+    [formControl]="formControlCenter"
+    [options]="optionsCenter"
+  >
+  </fusion-radio-group>
+</div>
+
+<div class="radio-holder">
+  <fusion-radio-group
+    class="options-1"
+    [formControl]="formControlCenter"
     [options]="options"
+    [inline]="true"
   >
   </fusion-radio-group>
 </div>
