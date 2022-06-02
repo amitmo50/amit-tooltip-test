@@ -1,0 +1,24 @@
+:host {
+  height: 100vh;
+  font-family: HelveticaNeue, helvetica;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+}
+
+.button-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.custom-tooltip-content {
+  display: flex;
+  align-items: center;
+}
+
+fusion-icon {
+  width: 16px;
+  height: 16px;
+}
