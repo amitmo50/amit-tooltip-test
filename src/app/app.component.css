@@ -7,6 +7,10 @@
   color: #2c3e50;
 }
 
+.button-container-1 {
+  display: flex;
+}
+
 .button-container {
   height: 100vh;
   display: flex;
@@ -16,6 +20,10 @@
 .custom-tooltip-content {
   display: flex;
   align-items: center;
+}
+
+.button-container-1 .tooltip-button {
+  margin-left: auto;
 }
 
 fusion-icon {

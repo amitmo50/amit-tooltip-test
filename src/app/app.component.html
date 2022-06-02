@@ -1,3 +1,44 @@
+<div class="button-container-1">
+  <!-- Left -->
+
+  <fusion-button
+    class="danger"
+    fusionTooltip
+    [configuration]="{
+      backgroundColor: 'blue',
+      preventTooltipToClose: false
+    }"
+  >
+    <div>Trigger Tooltip</div>
+    <div *fusionTooltipContent>
+      <span class="custom-tooltip-content"
+        >Tooltip Content
+        <fusion-icon name="group"></fusion-icon>
+      </span>
+    </div>
+  </fusion-button>
+
+  <!-- Right -->
+
+  <fusion-button
+    class="third tooltip-button"
+    fusionTooltip
+    [configuration]="{
+      backgroundColor: 'blue',
+      preventTooltipToClose: false
+    }"
+  >
+    <div>Trigger Tooltip</div>
+    <div *fusionTooltipContent>
+      <span class="custom-tooltip-content"
+        >Tooltip Content
+        <fusion-icon name="group"></fusion-icon>
+      </span>
+    </div>
+  </fusion-button>
+</div>
+
+<!-- Center -->
 <div class="button-container">
   <fusion-button
     class="danger"
