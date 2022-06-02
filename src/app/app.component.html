@@ -2,60 +2,50 @@
   class="main-content"
   *ngIf="showTooltipOption$ | async as showTooltipOption"
 >
-  <div class="button-container-1">
-    <!-- Left -->
+  <ng-container *ngIf="config$ | async as config">
+    <div class="button-container-1">
+      <!-- Left -->
 
-    <div class="button-container-1" *ngIf="showTooltipOption.id === '1'">
-      <fusion-button
-        class="danger"
-        fusionTooltip
-        [configuration]="config$ | async"
-      >
-        <div>Trigger Tooltip</div>
-        <div *fusionTooltipContent>
-          <span class="custom-tooltip-content"
-            >Tooltip Content
-            <fusion-icon name="group"></fusion-icon>
-          </span>
-        </div>
-      </fusion-button>
-    </div>
-
-    <!-- Right -->
-
-    <div *ngIf="showTooltipOption.id === '2'" class="third tooltip-button">
-      <fusion-button
-        class="third"
-        fusionTooltip
-        [configuration]="config$ | async"
-      >
-        <div>Trigger Tooltip</div>
-        <div *fusionTooltipContent>
-          <span class="custom-tooltip-content"
-            >Tooltip Content
-            <fusion-icon name="group"></fusion-icon>
-          </span>
-        </div>
-      </fusion-button>
-    </div>
-  </div>
-
-  <!-- Center -->
-  <div class="button-container" *ngIf="showTooltipOption.id === '3'">
-    <fusion-button
-      class="secondary"
-      fusionTooltip
-      [configuration]="config$ | async"
-    >
-      <div>Trigger Tooltip</div>
-      <div *fusionTooltipContent>
-        <span class="custom-tooltip-content"
-          >Tooltip Content
-          <fusion-icon name="group"></fusion-icon>
-        </span>
+      <div class="button-container-1" *ngIf="showTooltipOption.id === '1'">
+        <fusion-button class="danger" fusionTooltip [configuration]="config">
+          <div>Trigger Tooltip</div>
+          <div *fusionTooltipContent>
+            <span class="custom-tooltip-content"
+              >Tooltip Content
+              <fusion-icon name="group"></fusion-icon>
+            </span>
+          </div>
+        </fusion-button>
       </div>
-    </fusion-button>
-  </div>
+
+      <!-- Right -->
+
+      <div *ngIf="showTooltipOption.id === '2'" class="third tooltip-button">
+        <fusion-button class="third" fusionTooltip [configuration]="config">
+          <div>Trigger Tooltip</div>
+          <div *fusionTooltipContent>
+            <span class="custom-tooltip-content"
+              >Tooltip Content
+              <fusion-icon name="group"></fusion-icon>
+            </span>
+          </div>
+        </fusion-button>
+      </div>
+    </div>
+
+    <!-- Center -->
+    <div class="button-container" *ngIf="showTooltipOption.id === '3'">
+      <fusion-button class="secondary" fusionTooltip [configuration]="config">
+        <div>Trigger Tooltip</div>
+        <div *fusionTooltipContent>
+          <span class="custom-tooltip-content"
+            >Tooltip Content
+            <fusion-icon name="group"></fusion-icon>
+          </span>
+        </div>
+      </fusion-button>
+    </div>
+  </ng-container>
 </div>
 
 <div class="radio-holder">

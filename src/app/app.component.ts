@@ -25,7 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   formControl = new FormControl({ id: '1', label: 'Tooltip Left' });
   formControlConfig = new FormControl({ id: '5', label: 'Default' });
-  config$ = new BehaviorSubject<any>(null);
+  config$ = new BehaviorSubject<any>({});
   showTooltipOption$ = new BehaviorSubject<any>(null);
 
   private onDestroy$ = new Subject<void>();
@@ -56,27 +56,23 @@ export class AppComponent implements OnInit, OnDestroy {
         let config;
         switch (val.id) {
           case '1':
-            config = { backgroundColor: '', width: 200, height: null };
+            config = { width: 200 };
             this.config$.next({ ...config });
-            console.log(this.config$.value());
             break;
           case '2':
-            config = { height: 300, width: null };
+            config = { height: 300 };
             this.config$.next({ ...config });
-            console.log(this.config$.getValue());
             break;
           case '3':
             config = { height: 100, width: 500 };
             this.config$.next({ ...config });
-            console.log(this.config$.getValue());
             break;
           case '4':
             config = { ...this.config$.getValue(), backgroundColor: 'green' };
             this.config$.next({ ...config });
-            console.log(this.config$.getValue());
             break;
           default:
-            this.config$.next(null);
+            this.config$.next({});
             break;
         }
       });
