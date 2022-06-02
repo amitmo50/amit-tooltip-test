@@ -25,7 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ];
 
   formControl = new FormControl({ id: '1', label: 'Tooltip Left' });
-  formControlConfig = new FormControl({ id: '6', label: 'Default' });
+  formControlConfig = new FormControl(this.optionsTwo[5]);
   config$ = new BehaviorSubject<any>({});
   showTooltipOption$ = new BehaviorSubject<any>(null);
   text = 'Tooltip Content';
@@ -48,13 +48,16 @@ export class AppComponent implements OnInit, OnDestroy {
       )
       .subscribe((val) => {
         this.showTooltipOption$.next(val);
-        this.formControlConfig.setValue({ id: '5', label: 'Default' });
+        this.formControlConfig.setValue(this.optionsTwo[5]);
       });
 
     this.formControlConfig.valueChanges
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((val) => {
         let config;
+        if (this.text !== 'Tooltip Content') {
+          this.text = 'Tooltip Content';
+        }
         switch (val.id) {
           case '1':
             config = { width: 200 };
@@ -77,6 +80,8 @@ export class AppComponent implements OnInit, OnDestroy {
             molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
             numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
             optio, eaque rerum! Provident similique accusantium nemo autem. `;
+            config = { height: 100, width: 500 };
+            this.config$.next({ ...config });
             break;
           default:
             this.config$.next({});
