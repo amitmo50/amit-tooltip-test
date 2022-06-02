@@ -2,7 +2,10 @@
   <div class="button-container-1">
     <!-- Left -->
 
-    <div class="button-container-1" *ngIf="formControl.value.id === '1'">
+    <div
+      class="button-container-1"
+      *ngIf="(showTooltipOption$ | async).id === '1'"
+    >
       <fusion-button
         class="danger"
         fusionTooltip
@@ -30,7 +33,10 @@
 
     <!-- Right -->
 
-    <div *ngIf="formControl.value.id === '2'" class="third tooltip-button">
+    <div
+      *ngIf="(showTooltipOption$ | async).id === '2'"
+      class="third tooltip-button"
+    >
       <fusion-button
         class="third"
         fusionTooltip
@@ -58,7 +64,7 @@
   </div>
 
   <!-- Center -->
-  <div class="button-container" *ngIf="formControl.value.id === '3'">
+  <div class="button-container" *ngIf="(showTooltipOption$ | async).id === '3'">
     <fusion-button
       class="secondary"
       fusionTooltip

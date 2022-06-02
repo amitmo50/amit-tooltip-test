@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { startWith, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   options = [
     { id: '1', label: 'Tooltip Left' },
     { id: '2', label: 'Tooltip Right' },
@@ -37,12 +38,20 @@ export class AppComponent implements OnInit {
   formControlRight = new FormControl({ id: '2', label: 'Checked B' });
   formControlCenter = new FormControl({ id: '2', label: 'Checked B' });
 
-  showTooltipOption$ = new BehaviorSubject<string>('1');
+  showTooltipOption$ = new BehaviorSubject<any>(null);
+  onDestroy$ = new Subject<void>();
 
   ngOnInit() {
-    this.formControl.valueChanges.subscribe((val) => {
-      console.log(val);
-      this.showTooltipOption$.next(val);
-    });
+    this.formControl.valueChanges
+      .pipe(
+        takeUntil(this.onDestroy$),
+        startWith({ id: '1', label: 'Tooltip Left' })
+      )
+      .subscribe((val) => this.showTooltipOption$.next(val));
+  }
+
+  ngOnDestroy() {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
   }
 }
